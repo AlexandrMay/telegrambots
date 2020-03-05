@@ -31,7 +31,7 @@ bot.command('fortune', ctx => {
 });
 
 bot.command('dogbreeds', ctx => {
-    let rawdata = fs.readFileSync("./7.1 dogbreeds.json.json", "utf8");
+    let rawdata = fs.readFileSync("C:\\Users\\Oleksandr\\Desktop\\telegrambots\\simpleapibot\\dogbreeds.json", "utf8");
     let data = JSON.parse(rawdata);
     let message = "Dog Breeds:\n";
     data.forEach(item=>{
@@ -47,7 +47,7 @@ bot.command("dog", ctx => {
         return;
     }
     let breedInput = input[1];
-    let rawdata = fs.readFileSync("./7.1 dogbreeds.json.json", "utf8");
+    let rawdata = fs.readFileSync("C:\\Users\\Oleksandr\\Desktop\\telegrambots\\simpleapibot\\dogbreeds.json", "utf8");
     let data = JSON.parse(rawdata);
 
     if (data.includes(breedInput)){
