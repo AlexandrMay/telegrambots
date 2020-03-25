@@ -3,9 +3,13 @@ const axios = require('axios');
 
 const bot = new Telegraf('1096258073:AAGzilUFnU8HVn0Rq6P55Per4WF4KmVxAYw');
 
-getData();
-
 let dataStore = [];
+
+async function updateStore() {
+    await getData();
+}
+
+updateStore();
 
 bot.command('fact', ctx => {
     let maxRow = dataStore.filter(item=>{
