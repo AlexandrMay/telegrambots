@@ -16,6 +16,9 @@ function sendStartMessage(ctx){
                     [
                         {text: 'CoinMarketCap', url: 'https://coinmarketcap.com/'}
                     ],
+                    [
+                        {text: 'Info', callback_data: 'info'}
+                    ]
                 ]
             }
         });
@@ -81,6 +84,41 @@ bot.action(priceActionList, async ctx => {
     } catch (e) {
         console.log(e)
     }
+});
+
+bot.action('info', ctx => {
+    ctx.answerCbQuery();
+   bot.telegram.sendMessage(ctx.chat.id, 'Bot Info', {
+       reply_markup: {
+           keyboard: [
+               [
+                   {text: 'Credits'},
+                   {text: 'API'}
+               ],
+               [
+                   {text: 'Remove Keyboard'}
+               ]
+           ],
+           resize_keyboard: true,
+           one_time_keyboard: true
+       }
+   })
+});
+
+bot.hears('Credits', ctx => {
+   ctx.reply('This bot was made by @name');
+});
+
+bot.hears('API', ctx => {
+    ctx.reply('This bot uses cryptocompare API');
+});
+
+bot.hears('Remove Keyboard', ctx => {
+    bot.telegram.sendMessage(ctx.chat.id, 'Removed Keyboard', {
+        reply_markup: {
+           remove_keyboard: true
+        }
+    })
 });
 
 bot.launch();
